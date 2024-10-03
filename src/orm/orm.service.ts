@@ -4,7 +4,7 @@ import { CreateOrmDto } from './dto/create-orm.dto';
 @Injectable()
 export class OrmService {
   private ormData: CreateOrmDto[] = [];
-  private bloodTypes = ['o+', 'o-', 'AB+', 'AB-'];
+  private bloodTypes = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
 
   create(createOrmDto: CreateOrmDto) {
     try {
@@ -16,7 +16,7 @@ export class OrmService {
       return {
         status: 'success',
         bloodType: randomBloodType,
-        data: { id: createOrmDto.id, result: randomBloodType },
+        data: { ...createOrmDto },
       };
     } catch (error) {
       throw error;
